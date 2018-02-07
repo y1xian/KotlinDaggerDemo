@@ -1,7 +1,7 @@
 # KotlinDaggerDemo
 文笔不好，有不懂的属性可以去百度，这里不作过多解释
 
-######导入
+# 导入
 没啥好说的，需要注意的就是别忘了加上
 ```
   apply plugin: 'kotlin-kapt'
@@ -20,7 +20,7 @@
     kapt 'com.google.dagger:dagger-android-processor:2.13'
 ```
 
-######进入主题
+# 进入主题
 
 Module
 这里写了个ActivityBuilderModule
@@ -77,7 +77,7 @@ interface AppComponent {
 
 别忘了Make Project
  Component会在自己生成一个 （Dagger+你的Component），本文的是DaggerAppComponent，然后在Application创建单例的Component
-######Application
+# Application
 1.你可以直接继承 DaggerApplication 
 2.如本文，继承HasActivityInjector实现，否则编译不过
 ```
@@ -107,7 +107,7 @@ class MyApplication : Application() , HasActivityInjector {
 
 }
 ```
-######注入Activity和Fragment
+# 注入Activity和Fragment
 1.你可以直接继承DaggerAppCompatActivity、DaggerFragment
 2.创建BaseActivity、BaseFragment 然后继承...如下文
 ```
@@ -197,7 +197,7 @@ class MainFragment @Inject constructor(): BaseFragment() {
 }
 ```
 
-######总结坑点
+# 总结坑点
 1. DaggerAppComponent爆红不要急，Make Project就出来了（如果能顺利编译）
 2. lateinit 前不要用 private 否则编译报错
 3. @Inject标注其无参构造方法 （@Inject constructor()）,然后在Module @Binds
